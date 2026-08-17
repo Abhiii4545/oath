@@ -2,6 +2,13 @@ import RevealText from '../ui/RevealText'
 import Reveal from '../ui/Reveal'
 import ImagePlate from '../ui/ImagePlate'
 
+const STATS = [
+  { n: '02', label: 'In production' },
+  { n: '05', label: 'In development' },
+  { n: 'S1', label: 'Season one, 2026' },
+  { n: '∞', label: 'Ideas queued' },
+]
+
 const FEATURES = [
   {
     n: '01',
@@ -13,6 +20,7 @@ const FEATURES = [
     plateTitle: 'OATH 001',
     image: 'https://i.ytimg.com/vi/800C4RpJlK8/maxresdefault.jpg',
     imageFallback: 'https://i.ytimg.com/vi/800C4RpJlK8/hqdefault.jpg',
+    specs: ['Long-form', 'Ft. Sai Kiran', 'Out now'],
     flip: false,
   },
   {
@@ -23,6 +31,7 @@ const FEATURES = [
     word: 'Supply',
     tag: 'Drop 001',
     plateTitle: 'Coming 2026',
+    specs: ['Small batch', 'Considered', 'Unbranded loud'],
     flip: true,
   },
 ]
@@ -32,15 +41,41 @@ export default function Featured() {
     <section id="featured" className="section featured">
       <div className="shell">
         <div className="featured__head">
-          <Reveal>
-            <span className="meta">05 — Featured</span>
-          </Reveal>
+          <div className="featured__head-top">
+            <Reveal>
+              <span className="meta">05 — Featured</span>
+            </Reveal>
+            <Reveal delay={0.05}>
+              <span className="meta">Active now / 2026</span>
+            </Reveal>
+          </div>
+
           <RevealText
             as="h2"
             className="featured__title font-display"
-            lines={['Currently in motion.']}
+            lines={['Currently', 'in motion.']}
+            stagger={0.1}
             duration={0.95}
           />
+
+          <div className="featured__lede">
+            <Reveal delay={0.1}>
+              <p>
+                Not concepts — things already being made. This is what OATH is
+                building right now, across sound, cloth and the spaces in
+                between.
+              </p>
+            </Reveal>
+          </div>
+
+          <div className="featured__stats">
+            {STATS.map((s, i) => (
+              <Reveal key={s.label} className="featured__stat" delay={0.08 * i}>
+                <span className="featured__stat-n numeral">{s.n}</span>
+                <span className="featured__stat-label meta">{s.label}</span>
+              </Reveal>
+            ))}
+          </div>
         </div>
 
         <div className="featured__list">
@@ -69,6 +104,15 @@ export default function Featured() {
                 <Reveal className="feature__body" delay={0.1}>
                   <p>{f.body}</p>
                 </Reveal>
+
+                <Reveal className="feature__specs" delay={0.15}>
+                  {f.specs.map((s) => (
+                    <span key={s} className="feature__spec meta">
+                      {s}
+                    </span>
+                  ))}
+                </Reveal>
+
                 <Reveal delay={0.2}>
                   <span
                     className="feature__link"
