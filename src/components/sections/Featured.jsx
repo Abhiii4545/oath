@@ -18,7 +18,7 @@ const FEATURES = [
     word: 'Podcast',
     tag: 'EP. 001',
     plateTitle: 'OATH 001',
-    image: 'https://i.ytimg.com/vi/800C4RpJlK8/maxresdefault.jpg',
+    image: '/thumbs/800C4RpJlK8.jpg',
     imageFallback: 'https://i.ytimg.com/vi/800C4RpJlK8/hqdefault.jpg',
     specs: ['Long-form', 'Ft. Sai Kiran', 'Out now'],
     flip: false,

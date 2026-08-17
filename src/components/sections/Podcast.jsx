@@ -21,7 +21,9 @@ const MORE = [
   { id: 'R2zbcFCa_mk', title: '#OATH002 — Coming Soon', meta: 'Teaser · New' },
 ]
 
-const thumb = (id) => `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`
+// self-hosted frames captured from each episode (public/thumbs/<id>.jpg),
+// with the YouTube CDN as a fallback if a local file is ever missing
+const thumb = (id) => `/thumbs/${id}.jpg`
 const thumbFallback = (id) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`
 const embed = (id, { mute }) =>
   `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=${mute ? 1 : 0}` +
