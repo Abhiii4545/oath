@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
+import Logo from '../Logo'
 
-const LETTERS = ['O', 'A', 'T', 'H']
 const META = ['Podcasts', 'Clothing', 'Events', 'More']
 
 export default function Hero() {
@@ -38,30 +38,19 @@ export default function Hero() {
           </span>
         </motion.div>
 
-        {/* wordmark */}
+        {/* wordmark — real OATH logo */}
         <motion.div className="hero__mark-wrap" style={{ opacity: s(markOpacity) }}>
-          <motion.h1
-            className="hero__mark display-xl"
-            style={{ scale: s(scale), y: s(y) }}
-            aria-label="OATH"
-          >
-            {LETTERS.map((l, i) => (
-              <span key={i} className="line-mask hero__letter">
-                <motion.span
-                  style={{ display: 'block' }}
-                  initial={{ y: '112%' }}
-                  animate={{ y: '0%' }}
-                  transition={{
-                    duration: 1.15,
-                    ease: [0.16, 1, 0.3, 1],
-                    delay: 0.45 + i * 0.09,
-                  }}
-                >
-                  {l}
-                </motion.span>
-              </span>
-            ))}
-          </motion.h1>
+          <motion.div className="hero__mark-scroll" style={{ scale: s(scale), y: s(y) }}>
+            <motion.h1
+              className="hero__mark"
+              aria-label="OATH"
+              initial={{ clipPath: 'inset(0% 0% 100% 0%)', opacity: 0, y: 24 }}
+              animate={{ clipPath: 'inset(0% 0% 0% 0%)', opacity: 1, y: 0 }}
+              transition={{ duration: 1.3, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
+            >
+              <Logo className="hero__logo" />
+            </motion.h1>
+          </motion.div>
         </motion.div>
 
         {/* supporting line + metadata strip */}

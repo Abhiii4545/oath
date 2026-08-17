@@ -309,16 +309,21 @@
   display: grid;
   place-items: center;
 }
-.hero__mark {
-  display: flex;
-  gap: clamp(4px, 1vw, 18px);
-  font-size: clamp(96px, 32vw, 560px);
-  line-height: 0.8;
-  color: var(--paper);
+.hero__mark-scroll {
+  display: grid;
+  place-items: center;
   will-change: transform;
 }
-.hero__letter span {
+.hero__mark {
   display: block;
+  margin: 0;
+  line-height: 0;
+}
+.hero__logo {
+  display: block;
+  width: min(1500px, 86vw);
+  height: auto;
+  color: var(--paper);
 }
 .hero__bottom {
   position: absolute;
