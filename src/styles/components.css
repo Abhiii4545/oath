@@ -1027,6 +1027,21 @@
   height: auto;
   color: rgba(245, 245, 245, 0.22);
 }
+.plate__brand {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 46%;
+  display: block;
+  z-index: 1;
+}
+.plate__brand-mark {
+  width: 100%;
+  height: auto;
+  color: var(--paper);
+  filter: drop-shadow(0 2px 18px rgba(0, 0, 0, 0.5));
+}
 .plate__img {
   position: absolute;
   inset: 0;

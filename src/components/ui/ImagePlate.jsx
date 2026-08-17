@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
+import Logo from '../Logo'
 
 /**
  * Editorial "plate". A composed monochrome panel that never reads as
@@ -16,6 +17,7 @@ export default function ImagePlate({
   word = '',
   image = '',
   imageFallback = '',
+  brand = false,
   tint = false,
   className = '',
   ratio = '4 / 3',
@@ -46,6 +48,13 @@ export default function ImagePlate({
         <span className="plate__word font-display" aria-hidden>
           {word}
         </span>
+
+        {/* real OATH logo, printed on the garment (crisp vector, always correct) */}
+        {brand && (
+          <span className="plate__brand" aria-hidden>
+            <Logo className="plate__brand-mark" />
+          </span>
+        )}
 
         {/* OATH chevron watermark */}
         <svg className="plate__mono" viewBox="0 0 320 320" aria-hidden fill="none" stroke="currentColor" strokeWidth="14">

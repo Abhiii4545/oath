@@ -31,7 +31,8 @@ const FEATURES = [
     word: 'Supply',
     tag: 'Drop 001',
     plateTitle: 'Coming 2026',
-    specs: ['Small batch', 'Considered', 'Unbranded loud'],
+    brand: true,
+    specs: ['Small batch', 'Considered', 'OATH marked'],
     flip: true,
   },
 ]
@@ -89,6 +90,7 @@ export default function Featured() {
                   tag={f.tag}
                   image={f.image}
                   imageFallback={f.imageFallback}
+                  brand={f.brand}
                   ratio="5 / 6"
                   tint={f.flip}
                 />
