@@ -49,11 +49,33 @@ export default function HorizontalStory() {
           {PANELS.map((p, i) =>
             p.type === 'intro' ? (
               <article className="panel panel--intro" key={i}>
-                <div className="panel__intro shell">
-                  <span className="panel__n numeral">{p.n} — Horizontal</span>
-                  <h3 className="panel__key panel__key--intro font-display">{p.key}</h3>
-                  <p className="panel__big font-display">{p.big}</p>
-                  <span className="panel__hint meta">Keep scrolling — this chapter moves sideways →</span>
+                <div className="panel__intro-grid shell">
+                  <div className="panel__intro">
+                    <span className="panel__n numeral">{p.n} — Horizontal</span>
+                    <h3 className="panel__key panel__key--intro font-display">{p.key}</h3>
+                    <p className="panel__big font-display">{p.big}</p>
+                    <span className="panel__hint meta">Keep scrolling — this chapter moves sideways →</span>
+                  </div>
+
+                  <div className="panel__visual panel__visual--intro">
+                    <div className="panel__plate" />
+                    <img
+                      className="panel__img"
+                      src="/brand/intro.jpg"
+                      alt="OATH"
+                      loading="lazy"
+                      onError={(e) => {
+                        if (!e.currentTarget.dataset.fb) {
+                          e.currentTarget.dataset.fb = '1'
+                          e.currentTarget.src = '/brand/studio.jpg'
+                        } else {
+                          e.currentTarget.style.display = 'none'
+                        }
+                      }}
+                    />
+                    <div className="panel__scan" />
+                    <span className="panel__label meta">OATH / Est. 2026</span>
+                  </div>
                 </div>
               </article>
             ) : (

@@ -4,12 +4,12 @@ import Reveal from '../ui/Reveal'
 import RevealText from '../ui/RevealText'
 
 const PROJECTS = [
-  { n: '01', cat: 'Audio', title: 'The Podcast', year: '2026', desc: 'Conversations with the people building culture in real time.' },
-  { n: '02', cat: 'Supply', title: 'OATH Supply', year: '2026', desc: 'Garments as artefacts — limited, considered, unbranded loud.' },
-  { n: '03', cat: 'Live', title: 'Live Sessions', year: '2026', desc: 'Intimate rooms, recorded once, never repeated.' },
-  { n: '04', cat: 'Events', title: 'OATH Events', year: '—', desc: 'Gatherings that turn an audience into a community.' },
-  { n: '05', cat: 'Studio', title: 'Project X', year: 'Soon', desc: 'Currently unnamed. Currently unannounced. Currently ours.' },
-  { n: '06', cat: 'Open', title: 'More Soon', year: '∞', desc: 'The index is deliberately unfinished. So is OATH.' },
+  { n: '01', cat: 'Audio', title: 'The Podcast', year: '2026', desc: 'Conversations with the people building culture in real time.', img: '/thumbs/800C4RpJlK8.jpg' },
+  { n: '02', cat: 'Supply', title: 'OATH Supply', year: '2026', desc: 'Garments as artefacts — limited, considered, unbranded loud.', img: '/brand/idx-supply.jpg', fb: '/brand/clothing.jpg' },
+  { n: '03', cat: 'Live', title: 'Live Sessions', year: '2026', desc: 'Intimate rooms, recorded once, never repeated.', img: '/brand/idx-live.jpg', fb: '/brand/studio.jpg' },
+  { n: '04', cat: 'Events', title: 'OATH Events', year: '—', desc: 'Gatherings that turn an audience into a community.', img: '/brand/idx-events.jpg', fb: '/brand/events.jpg' },
+  { n: '05', cat: 'Studio', title: 'Project X', year: 'Soon', desc: 'Currently unnamed. Currently unannounced. Currently ours.', img: '/brand/idx-projectx.jpg', fb: '/brand/abstract.jpg' },
+  { n: '06', cat: 'Open', title: 'More Soon', year: '∞', desc: 'The index is deliberately unfinished. So is OATH.', img: '/brand/idx-more.jpg', fb: '/brand/community.jpg' },
 ]
 
 const ease = [0.16, 1, 0.3, 1]
@@ -78,14 +78,26 @@ function Row({ p }) {
       </span>
 
       <div className="p-row__preview" aria-hidden>
-        <motion.div
-          className="p-row__plate"
-          animate={{ clipPath: hover ? 'inset(0% 0% 0% 0%)' : 'inset(0% 0% 100% 0%)' }}
-          transition={{ duration: 0.55, ease }}
-        >
+        <div className="p-row__plate">
           <div className="p-row__field" />
+          {p.img && (
+            <img
+              className="p-row__img"
+              src={p.img}
+              alt={p.title}
+              loading="lazy"
+              onError={(e) => {
+                if (p.fb && !e.currentTarget.dataset.fb) {
+                  e.currentTarget.dataset.fb = '1'
+                  e.currentTarget.src = p.fb
+                } else {
+                  e.currentTarget.style.display = 'none'
+                }
+              }}
+            />
+          )}
           <span className="p-row__plate-label meta">{p.title}</span>
-        </motion.div>
+        </div>
       </div>
     </motion.article>
   )
