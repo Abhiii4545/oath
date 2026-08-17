@@ -63,13 +63,20 @@
   justify-content: space-between;
 }
 .nav__brand {
-  font-size: clamp(16px, 1.4vw, 20px);
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  transition: transform 0.5s var(--ease);
+  display: inline-flex;
+  align-items: center;
+  color: var(--paper);
+  transform-origin: left center;
+  transition: transform 0.5s var(--ease), color 0.35s var(--ease);
+}
+.nav__logo {
+  display: block;
+  height: clamp(16px, 1.5vw, 20px);
+  width: auto;
+  color: currentColor;
 }
 .nav--scrolled .nav__brand {
-  transform: scale(0.94);
+  transform: scale(0.92);
 }
 .nav__brand:hover {
   color: var(--electric);

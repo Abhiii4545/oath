@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import Logo from './Logo'
 
 const MENU = [
   { id: 'hero', label: 'Index', n: '00' },
@@ -65,8 +66,8 @@ export default function Nav() {
     <>
       <header className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
         <div className="nav__inner shell">
-          <button className="nav__brand font-display" onClick={() => go('hero')} data-cursor="hover">
-            OATH
+          <button className="nav__brand" onClick={() => go('hero')} data-cursor="hover" aria-label="OATH — home">
+            <Logo className="nav__logo" />
           </button>
 
           <div className="nav__center meta">
