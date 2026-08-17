@@ -36,10 +36,10 @@ export default function ImagePlate({
       ref={ref}
       className={`plate ${tint ? 'plate--tint' : ''} ${className}`}
       style={{ aspectRatio: ratio }}
-      initial={{ clipPath: 'inset(100% 0% 0% 0%)' }}
-      whileInView={{ clipPath: 'inset(0% 0% 0% 0%)' }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+      initial={{ opacity: 0, scale: 1.06 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
     >
       <motion.div className="plate__inner" style={{ y }}>
         <div className="plate__field" />
