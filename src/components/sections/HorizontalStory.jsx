@@ -3,11 +3,11 @@ import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion
 
 const PANELS = [
   { type: 'intro', n: '04', kicker: 'Chapter — Horizontal', key: 'OATH', big: 'One brand. Many rooms.' },
-  { n: '01', kicker: 'Audio', key: 'Podcasts', big: 'Voices, unedited.', desc: 'Long-form conversation, released whole.', tint: false },
-  { n: '02', kicker: 'Supply', key: 'Clothing', big: 'Worn ideas.', desc: 'Garments made as artefacts, in small runs.', tint: true },
-  { n: '03', kicker: 'Live', key: 'Events', big: 'In the room.', desc: 'Gatherings built for people, not feeds.', tint: false },
-  { n: '04', kicker: 'People', key: 'Community', big: 'Not an audience.', desc: 'The ones who show up early and stay.', tint: true },
-  { n: '05', kicker: 'Open', key: 'Future', big: 'More coming.', desc: 'The parts we haven’t named yet.', tint: false, last: true },
+  { n: '01', kicker: 'Audio', key: 'Podcasts', big: 'Voices, unedited.', desc: 'Long-form conversation, released whole.', img: '/thumbs/800C4RpJlK8.jpg', tint: false },
+  { n: '02', kicker: 'Supply', key: 'Clothing', big: 'Worn ideas.', desc: 'Garments made as artefacts, in small runs.', img: '/brand/clothing.jpg', tint: true },
+  { n: '03', kicker: 'Live', key: 'Events', big: 'In the room.', desc: 'Gatherings built for people, not feeds.', img: '/brand/events.jpg', tint: false },
+  { n: '04', kicker: 'People', key: 'Community', big: 'Not an audience.', desc: 'The ones who show up early and stay.', img: '/brand/community.jpg', tint: true },
+  { n: '05', kicker: 'Open', key: 'Future', big: 'More coming.', desc: 'The parts we haven’t named yet.', img: '/brand/abstract.jpg', tint: false, last: true },
 ]
 
 // Scroll length: 100vh pin + ~78vh of travel per extra panel — snappy, no dead scroll.
@@ -79,10 +79,22 @@ export default function HorizontalStory() {
 
                   <div className="panel__visual">
                     <div className={`panel__plate ${p.tint ? 'panel__plate--tint' : ''}`} />
+                    {p.img && (
+                      <img
+                        className="panel__img"
+                        src={p.img}
+                        alt={p.key}
+                        loading="lazy"
+                        onError={(e) => { e.currentTarget.style.display = 'none' }}
+                      />
+                    )}
+                    <div className="panel__scan" />
                     <span className="panel__idx numeral">{p.n}</span>
-                    <span className="panel__ghost font-display" aria-hidden>
-                      {p.key}
-                    </span>
+                    {!p.img && (
+                      <span className="panel__ghost font-display" aria-hidden>
+                        {p.key}
+                      </span>
+                    )}
                     <span className="panel__label meta">{p.key} / OATH</span>
                   </div>
                 </div>

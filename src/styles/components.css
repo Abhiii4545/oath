@@ -546,12 +546,34 @@
   opacity: 0.5;
   z-index: -1;
 }
+.u-preview__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: contrast(1.05) brightness(0.92);
+}
+.u-preview__scan {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(5, 5, 5, 0.15) 0%, transparent 30%, rgba(5, 5, 5, 0.8) 100%);
+}
+.u-preview__num,
+.u-preview__title,
+.u-preview__tag {
+  position: relative;
+  z-index: 2;
+}
 .u-preview__num {
   position: absolute;
   top: 20px;
   right: 24px;
   font-size: 14px;
   color: var(--electric);
+  z-index: 2;
 }
 .u-preview__title {
   font-size: clamp(28px, 3vw, 44px);
@@ -829,6 +851,21 @@
   background:
     radial-gradient(120% 110% at 22% 90%, rgba(36, 87, 255, 0.2) 0%, #060606 62%),
     repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0 1px, transparent 1px 44px);
+}
+.panel__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: contrast(1.05) brightness(0.92);
+}
+.panel__scan {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(5, 5, 5, 0.1) 0%, transparent 35%, rgba(5, 5, 5, 0.7) 100%);
 }
 .panel__idx {
   position: absolute;
